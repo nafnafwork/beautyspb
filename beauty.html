@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0b10" />
+    <title>Салон красоты в Санкт-Петербурге</title>
+    <meta
+      name="description"
+      content="Одностраничный лендинг салона красоты в Санкт-Петербурге. Услуги, цены, отзывы, контакты, онлайн-запись."
+    />
+
+    <style>
+      :root {
+        --bg: #0b0b10;
+        --bg2: #0f0f18;
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.08);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.56);
+        --accent: #ff5aa5;
+        --accent2: #a855f7;
+        --ok: #34d399;
+        --warn: #fbbf24;
+
+        --radius: 18px;
+        --radius2: 26px;
+
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+        --shadow2: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+        --max: 1100px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        color: var(--text);
+        background: radial-gradient(900px 500px at 15% 8%, rgba(255, 90, 165, 0.18), transparent 55%),
+          radial-gradient(700px 480px at 90% 18%, rgba(168, 85, 247, 0.16), transparent 58%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+
+      /* Header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: rgba(11, 11, 16, 0.58);
+        border-bottom: 1px solid var(--stroke);
+      }
+      .header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+      .brand__logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: radial-gradient(10px 10px at 30% 30%, rgba(255, 255, 255, 0.65), transparent 60%),
+          linear-gradient(135deg, rgba(255, 90, 165, 1), rgba(168, 85, 247, 1));
+        box-shadow: 0 10px 22px rgba(255, 90, 165, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .brand__name {
+        display: grid;
+        line-height: 1.1;
+      }
+      .brand__name strong {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
+      .brand__name span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: none;
+        gap: 14px;
+        align-items: center;
+      }
+      .nav a {
+        font-size: 13px;
+        color: var(--muted);
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+      }
+      .nav a:hover {
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .header__cta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 260px;
+        justify-content: flex-end;
+      }
+      .phone {
+        display: none;
+        text-align: right;
+        line-height: 1.2;
+      }
+      .phone a {
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .phone div {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        padding: 10px 14px;
+        cursor: pointer;
+        user-select: none;
+        transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn--ghost {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+      }
+      .btn--ghost:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .btn--primary {
+        background: linear-gradient(135deg, rgba(255, 90, 165, 1), rgba(168, 85, 247, 1));
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 16px 40px rgba(168, 85, 247, 0.16), 0 16px 40px rgba(255, 90, 165, 0.12);
+      }
+      .btn--primary:hover {
+        filter: brightness(1.05);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 44px 0 18px;
+      }
+      .hero__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .hero__card {
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius2);
+        padding: 18px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+      .hero__card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(420px 220px at 15% 0%, rgba(255, 90, 165, 0.22), transparent 55%),
+          radial-gradient(380px 220px at 85% 10%, rgba(168, 85, 247, 0.18), transparent 60%);
+        pointer-events: none;
+        opacity: 0.9;
+      }
+      .hero__card > * {
+        position: relative;
+        z-index: 1;
+      }
+      .badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.18);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 99px;
+        background: var(--ok);
+        box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.18);
+      }
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 30px;
+        line-height: 1.08;
+        letter-spacing: -0.6px;
+      }
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+        max-width: 66ch;
+      }
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .hero__facts {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .fact {
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.045);
+        box-shadow: var(--shadow2);
+      }
+      .fact strong {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .fact span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      /* Sections */
+      .section {
+        padding: 26px 0;
+      }
+      .section__head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .section__title {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: -0.2px;
+      }
+      .section__hint {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card {
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        overflow: hidden;
+      }
+      .card__inner {
+        padding: 14px;
+      }
+
+      .service {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      .icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: linear-gradient(135deg, rgba(255, 90, 165, 0.22), rgba(168, 85, 247, 0.18));
+        position: relative;
+        overflow: hidden;
+      }
+      .icon::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(16px 16px at 30% 30%, rgba(255, 255, 255, 0.45), transparent 60%);
+      }
+      .service h3 {
+        margin: 0 0 6px;
+        font-size: 14px;
+      }
+      .service p {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .service__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .pill {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+      .pill--accent {
+        color: rgba(255, 255, 255, 0.9);
+        border-color: rgba(255, 90, 165, 0.28);
+        background: rgba(255, 90, 165, 0.12);
+      }
+
+      /* Price table */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      .table th,
+      .table td {
+        padding: 12px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: left;
+      }
+      .table th {
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+      }
+      .table td:last-child,
+      .table th:last-child {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      /* Testimonials */
+      .quote {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .who {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* FAQ */
+      details {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 12px 12px;
+      }
+      details summary {
+        cursor: pointer;
+        list-style: none;
+        font-weight: 800;
+        font-size: 13px;
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+      details p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      /* Contact */
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .kv {
+        display: grid;
+        gap: 8px;
+      }
+      .kv__row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+      }
+      .kv__row:last-child {
+        border-bottom: none;
+      }
+      .k {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .v {
+        font-size: 13px;
+      }
+      .v a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(255, 255, 255, 0.22);
+      }
+
+      .form {
+        display: grid;
+        gap: 10px;
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--text);
+        padding: 12px 12px;
+        font-size: 14px;
+        outline: none;
+      }
+      textarea {
+        min-height: 92px;
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(255, 90, 165, 0.45);
+        box-shadow: 0 0 0 4px rgba(255, 90, 165, 0.12);
+      }
+
+      .note {
+        font-size: 12px;
+        color: var(--muted2);
+        line-height: 1.45;
+      }
+
+      .footer {
+        padding: 26px 0 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        margin-top: 18px;
+      }
+      .footer__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* Responsive */
+      @media (min-width: 860px) {
+        .nav {
+          display: flex;
+        }
+        .phone {
+          display: block;
+        }
+        .hero__grid {
+          grid-template-columns: 1.25fr 0.75fr;
+          align-items: start;
+        }
+        .hero__facts {
+          grid-template-columns: 1fr;
+        }
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (min-width: 1080px) {
+        h1 {
+          font-size: 40px;
+        }
+        .lead {
+          font-size: 15px;
+        }
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Utility */
+      .sep {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 14px 0;
+      }
+      .center {
+        display: grid;
+        justify-items: start;
+        gap: 10px;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 16px;
+        transform: translateX(-50%);
+        width: min(520px, calc(100% - 24px));
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 16px;
+        padding: 12px 14px;
+        box-shadow: var(--shadow2);
+        display: none;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        backdrop-filter: blur(14px);
+      }
+      .toast strong {
+        font-size: 13px;
+      }
+      .toast span {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .toast__actions {
+        display: flex;
+        gap: 8px;
+        flex: 0 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a class="brand" href="#top" aria-label="На главную">
+            <div class="brand__logo" aria-hidden="true"></div>
+            <div class="brand__name">
+              <strong> Marine • Салон красоты родом из Петербурга</strong>
+              <span>Ценим ваше время и деньги</span>
+            </div>
+          </a>
+
+          <nav class="nav" aria-label="Навигация">
+            <a href="#services">Услуги</a>
+            <a href="#prices">Цены</a>
+            <a href="#team">Мастера</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+          </nav>
+
+          <div class="header__cta">
+            <div class="phone">
+              <a href="tel:+79567772233">+7 956 777 22 33</a>
+              <div>Социалистическая, 22 • Санкт-Петербург</div>
+            </div>
+            <a class="btn btn--ghost" href="tel:+79567772233" aria-label="Позвонить">Позвонить</a>
+            <a class="btn btn--primary" href="#booking" aria-label="Записаться">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero__grid">
+            <div class="hero__card">
+              <div class="badge"><span class="dot" aria-hidden="true"></span>Сегодня есть окна • запись за 1 минуту</div>
+              <h1>Marine позаботиться о тебе</h1>
+              <p class="lead">
+                Маникюр, стрижки, окрашивание, брови и ресницы, уходовые процедуры. Выберите услугу и
+                оставьте заявку — мы перезвоним и подтвердим время.
+              </p>
+
+              <div class="hero__actions">
+                <a class="btn btn--primary" href="#booking">Онлайн-запись</a>
+                <a class="btn btn--ghost" href="#services">Смотреть услуги</a>
+                <a class="btn btn--ghost" href="#contacts">Как добраться</a>
+              </div>
+
+              <div class="sep"></div>
+
+              <div class="center">
+                <div class="pill pill--accent">Адрес: Социалистическая, 22, Санкт-Петербург</div>
+                <div class="pill">Телефон: <a href="tel:+79567772233" style="text-decoration: underline; text-underline-offset: 3px"
+                    >+7 956 777 22 33</a
+                  ></div>
+                <div class="pill">Время работы: ежедневно 10:00–21:00</div>
+              </div>
+            </div>
+
+            <div class="hero__facts" aria-label="Преимущества">
+              <div class="fact">
+                <strong>Стерильность и безопасность</strong>
+                <span>Мы используем только одноразовые расходники, а оборудование проходит стерилизацию в медицинском сухожаре.</span>
+              </div>
+              <div class="fact">
+                <strong>Опытные мастера</strong>
+                <span> Средний стаж мастеров в Marine составляет 5 лет. Каждый мастер отобран с любовью.</span>
+              </div>
+              <div class="fact">
+                <strong>Прозрачные цены</strong>
+                <span>Уточняем стоимость до начала процедур и предупреждаем об оплате за дополнительные услуги.</span>
+              </div>
+              <div class="fact">
+                <strong>Центр города</strong>
+                <span>Санкт-Петербург, ул. Социалистическая, 22 — на Лиговском. Во дворе есть парковка.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title"> Наши услуги</h2>
+            <p class="section__hint"> Выберите услугу, а мы позаботимся обо всём остальном</p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Маникюр и педикюр</h3>
+                  <p>Комбинированный/аппаратный, покрытие, укрепление, дизайн.</p>
+                  <div class="service__meta">
+                    <span class="pill">45–120 мин</span>
+                    <span class="pill pill--accent">от 1 490 ₽</span>
+                    <a class="pill" href="#booking" data-service="Маникюр/Педикюр">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Стрижки и укладки</h3>
+                  <p>Женские стрижки, укладки, уход и термозащита.</p>
+                  <div class="service__meta">
+                    <span class="pill">30–90 мин</span>
+                    <span class="pill pill--accent">от 1 200 ₽</span>
+                    <a class="pill" href="#booking" data-service="Стрижка/Укладка">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Окрашивание</h3>
+                  <p>Тонирование, сложные техники, подбор оттенка, защита волос.</p>
+                  <div class="service__meta">
+                    <span class="pill">90–240 мин</span>
+                    <span class="pill pill--accent">от 3 900 ₽</span>
+                    <a class="pill" href="#booking" data-service="Окрашивание">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Брови и ресницы</h3>
+                  <p>Коррекция и окрашивание бровей, ламинирование, ресницы.</p>
+                  <div class="service__meta">
+                    <span class="pill">30–90 мин</span>
+                    <span class="pill pill--accent">от 990 ₽</span>
+                    <a class="pill" href="#booking" data-service="Брови/Ресницы">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Уход за лицом</h3>
+                  <p>Чистка, увлажнение, массаж, подбор домашнего ухода.</p>
+                  <div class="service__meta">
+                    <span class="pill">45–90 мин</span>
+                    <span class="pill pill--accent">от 2 200 ₽</span>
+                    <a class="pill" href="#booking" data-service="Уход за лицом">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner service">
+                <div class="icon" aria-hidden="true"></div>
+                <div>
+                  <h3>Уход за волосами</h3>
+                  <p>Восстановление, питание, блеск, процедуры «на выход».</p>
+                  <div class="service__meta">
+                    <span class="pill">40–120 мин</span>
+                    <span class="pill pill--accent">от 1 800 ₽</span>
+                    <a class="pill" href="#booking" data-service="Уход за волосами">Записаться</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="note" style="margin-top: 12px">
+            Примечание: цены и длительность зависят от длины волос/сложности дизайна. Подтвердим стоимость при звонке.
+          </p>
+        </div>
+      </section>
+
+      <!-- Prices -->
+      <section class="section" id="prices">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Прайс (пример)</h2>
+            <p class="section__hint">Можно заменить на ваш реальный прайс</p>
+          </div>
+
+          <div class="card">
+            <div class="card__inner" style="padding: 0">
+              <table class="table" aria-label="Таблица цен">
+                <thead>
+                  <tr>
+                    <th>Услуга</th>
+                    <th>Время</th>
+                    <th>Цена</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Маникюр + покрытие</td>
+                    <td>90 мин</td>
+                    <td>2 290 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Педикюр (комбинированный)</td>
+                    <td>90–120 мин</td>
+                    <td>2 790 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Стрижка женская</td>
+                    <td>60 мин</td>
+                    <td>1 900 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Стрижка мужская</td>
+                    <td>45 мин</td>
+                    <td>1 200 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Окрашивание (тон/корни)</td>
+                    <td>120 мин</td>
+                    <td>3 900 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Сложное окрашивание</td>
+                    <td>180–240 мин</td>
+                    <td>от 7 900 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Брови (коррекция + окрашивание)</td>
+                    <td>45 мин</td>
+                    <td>1 490 ₽</td>
+                  </tr>
+                  <tr>
+                    <td>Ламинирование ресниц</td>
+                    <td>75 мин</td>
+                    <td>2 490 ₽</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section class="section" id="team">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Мастера</h2>
+            <p class="section__hint">Кратко и по делу: кто за что отвечает</p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card__inner">
+                <div class="service" style="grid-template-columns: 64px 1fr">
+                  <div class="icon" style="border-radius: 20px" aria-hidden="true"></div>
+                  <div>
+                    <h3>Анна • Колорист</h3>
+                    <p>Сложные техники, тонирование, диагностика и защита волос.</p>
+                    <div class="service__meta">
+                      <span class="pill">Окрашивание</span>
+                      <span class="pill">Уход</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner">
+                <div class="service" style="grid-template-columns: 64px 1fr">
+                  <div class="icon" style="border-radius: 20px" aria-hidden="true"></div>
+                  <div>
+                    <h3>Мария • Нейл-мастер</h3>
+                    <p>Аппаратный/комбинированный маникюр, укрепление, дизайн.</p>
+                    <div class="service__meta">
+                      <span class="pill">Маникюр</span>
+                      <span class="pill">Педикюр</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__inner">
+                <div class="service" style="grid-template-columns: 64px 1fr">
+                  <div class="icon" style="border-radius: 20px" aria-hidden="true"></div>
+                  <div>
+                    <h3>Екатерина • Бровист</h3>
+                    <p>Архитектура бровей, ламинирование, естественные формы.</p>
+                    <div class="service__meta">
+                      <span class="pill">Брови</span>
+                      <span class="pill">Ресницы</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section class="section" id="reviews">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Отзывы</h2>
+            <p class="section__hint">
+
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card__inner">
+                <p class="quote">«Очень аккуратный маникюр, идеальная форма и покрытие. Вернусь точно.»</p>
+                <div class="who"><span class="avatar" aria-hidden="true"></span>Ольга • Маникюр</div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__inner">
+                <p class="quote">«Подобрали оттенок под мой тон кожи. Волосы блестят, качество супер.»</p>
+                <div class="who"><span class="avatar" aria-hidden="true"></span>Ирина • Окрашивание</div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__inner">
+                <p class="quote">«Брови получились естественные, без “перерисовки”. Быстро и спокойно.»</p>
+                <div class="who"><span class="avatar" aria-hidden="true"></span>Алина • Брови</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">FAQ</h2>
+            <p class="section__hint">Типовые вопросы клиентов</p>
+          </div>
+
+          <div class="grid" style="grid-template-columns: 1fr">
+            <details>
+              <summary>Как проходит запись?</summary>
+              <p>
+                Вы оставляете заявку на сайте. Мы связываемся, уточняем услугу/длину/сложность, подтверждаем время и
+                итоговую стоимость.
+              </p>
+            </details>
+            <details>
+              <summary>Есть ли гарантия на покрытие?</summary>
+              <p>Да, гарантия на покрытие — 7 дней при соблюдении рекомендаций мастера.</p>
+            </details>
+            <details>
+              <summary>Как добраться?</summary>
+              <p>Адрес: Социалистическая, 22, Санкт-Петербург. В разделе «Контакты» есть кнопка с маршрутом.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacts + Booking -->
+      <section class="section" id="contacts">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Контакты</h2>
+            <p class="section__hint">Адрес и связь</p>
+          </div>
+
+          <div class="contact">
+            <div class="card">
+              <div class="card__inner">
+                <div class="kv" aria-label="Контактные данные">
+                  <div class="kv__row">
+                    <div class="k">Адрес</div>
+                    <div class="v">Социалистическая, 22, Санкт-Петербург</div>
+                  </div>
+                  <div class="kv__row">
+                    <div class="k">Телефон</div>
+                    <div class="v"><a href="tel:+79567772233">+7 956 777 22 33</a></div>
+                  </div>
+                  <div class="kv__row">
+                    <div class="k">Режим</div>
+                    <div class="v">Ежедневно 10:00–21:00</div>
+                  </div>
+                </div>
+
+                <div class="sep"></div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                  <a class="btn btn--primary" href="tel:+79567772233">Позвонить сейчас</a>
+                  <a class="btn btn--ghost" id="routeBtn" href="#" rel="noopener">Построить маршрут</a>
+                </div>
+
+                <p class="note" style="margin-top: 10px">
+                  Кнопка «Построить маршрут» открывает карту в новом окне (Google/Apple/Yandex — в зависимости от
+                  устройства).
+                </p>
+              </div>
+            </div>
+
+            <div class="card" id="booking">
+              <div class="card__inner">
+                <h3 style="margin: 0 0 10px; font-size: 16px">Онлайн-заявка на запись</h3>
+
+                <form class="form" id="bookingForm">
+                  <div class="field">
+                    <label for="name">Ваше имя</label>
+                    <input id="name" name="name" type="text" placeholder="Например, Екатерина" autocomplete="name" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="phone">Телефон</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      inputmode="tel"
+                      placeholder="+7 ___ ___ __ __"
+                      autocomplete="tel"
+                      required
+                    />
+                  </div>
+
+                  <div class="field">
+                    <label for="service">Услуга</label>
+                    <select id="service" name="service" required>
+                      <option value="" disabled selected>Выберите услугу</option>
+                      <option>Маникюр/Педикюр</option>
+                      <option>Стрижка/Укладка</option>
+                      <option>Окрашивание</option>
+                      <option>Брови/Ресницы</option>
+                      <option>Уход за лицом</option>
+                      <option>Уход за волосами</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="time">Желаемое время</label>
+                    <select id="time" name="time" required>
+                      <option value="" disabled selected>Выберите удобный слот</option>
+                      <option>Сегодня • 12:00–14:00</option>
+                      <option>Сегодня • 14:00–16:00</option>
+                      <option>Сегодня • 16:00–18:00</option>
+                      <option>Завтра • 10:00–12:00</option>
+                      <option>Завтра • 12:00–14:00</option>
+                      <option>Завтра • 18:00–20:00</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="comment">Комментарий (необязательно)</label>
+                    <textarea id="comment" name="comment" placeholder="Например: длина волос, пожелания по цвету/дизайну"></textarea>
+                  </div>
+
+                  <button class="btn btn--primary" type="submit">Отправить заявку</button>
+
+                  <p class="note">
+                    Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных для связи и записи.
+                    Это демо-форма: по умолчанию она откроет SMS/почту с текстом заявки.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__inner">
+            <div class="small">© <span id="year"></span> Салон красоты • Санкт-Петербург</div>
+            <div class="small">Адрес: Социалистическая, 22 • Телефон: <a href="tel:+79567772233">+7 956 777 22 33</a></div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <div>
+        <strong id="toastTitle">Готово</strong>
+        <span id="toastText">Заявка подготовлена.</span>
+      </div>
+      <div class="toast__actions">
+        <button class="btn btn--ghost" id="toastClose" type="button">Ок</button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const SALON = {
+          name: "Салон красоты • Санкт-Петербург",
+          address: "Социалистическая, 22, Санкт-Петербург",
+          phoneDisplay: "+7 956 777 22 33",
+          phoneTel: "+79567772233",
+        };
+
+        // Footer year
+        document.getElementById("year").textContent = String(new Date().getFullYear());
+
+        // Prefill service from витрины
+        document.querySelectorAll("[data-service]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const value = el.getAttribute("data-service");
+            const select = document.getElementById("service");
+            if (!select) return;
+            Array.from(select.options).forEach((opt) => {
+              if (opt.textContent === value) {
+                select.value = value;
+              }
+            });
+          });
+        });
+
+        // Route button: opens Google Maps with query (works on most devices)
+        const routeBtn = document.getElementById("routeBtn");
+        routeBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const q = encodeURIComponent(SALON.address);
+          const url = "https://www.google.com/maps/search/?api=1&query=" + q;
+          window.open(url, "_blank", "noopener,noreferrer");
+        });
+
+        // Simple toast
+        const toast = document.getElementById("toast");
+        const toastTitle = document.getElementById("toastTitle");
+        const toastText = document.getElementById("toastText");
+        const toastClose = document.getElementById("toastClose");
+
+        function showToast(title, text) {
+          toastTitle.textContent = title;
+          toastText.textContent = text;
+          toast.style.display = "flex";
+        }
+        function hideToast() {
+          toast.style.display = "none";
+        }
+        toastClose.addEventListener("click", hideToast);
+        toast.addEventListener("click", (e) => {
+          if (e.target === toast) hideToast();
+        });
+
+        // Booking form: builds message and opens SMS (mobile) or mailto fallback.
+        const form = document.getElementById("bookingForm");
+
+        function normalizePhone(value) {
+          return String(value || "")
+            .replace(/[^\d+]/g, "")
+            .replace(/^8/, "+7");
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const data = new FormData(form);
+          const name = String(data.get("name") || "").trim();
+          const phone = normalizePhone(data.get("phone"));
+          const service = String(data.get("service") || "").trim();
+          const time = String(data.get("time") || "").trim();
+          const comment = String(data.get("comment") || "").trim();
+
+          const lines = [
+            "Заявка на запись",
+            "Салон: " + SALON.name,
+            "Адрес: " + SALON.address,
+            "",
+            "Имя: " + name,
+            "Телефон: " + phone,
+            "Услуга: " + service,
+            "Время: " + time,
+            comment ? "Комментарий: " + comment : null,
+          ].filter(Boolean);
+
+          const text = lines.join("\n");
+          const encoded = encodeURIComponent(text);
+
+          // Try SMS deep link first (works best on mobile).
+          const smsUrl = "sms:" + SALON.phoneTel + "?&body=" + encoded;
+
+          // Fallback email (desktop)
+          const subject = encodeURIComponent("Заявка на запись — " + service);
+          const mailUrl = "mailto:?subject=" + subject + "&body=" + encoded;
+
+          // Heuristic: if touch device -> try SMS; else -> mailto
+          const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+          showToast("Заявка подготовлена", "Откроем приложение для отправки. Если не открылось — используйте звонок.");
+
+          setTimeout(() => {
+            window.location.href = isTouch ? smsUrl : mailUrl;
+          }, 350);
+
+          // Optional: reset
+          form.reset();
+        });
+
+        // Light phone mask (minimal)
+        const phoneInput = document.getElementById("phone");
+        phoneInput.addEventListener("input", () => {
+          // Keep it simple: no strict formatting, only trim very long strings
+          if (phoneInput.value.length > 20) phoneInput.value = phoneInput.value.slice(0, 20);
+        });
+      })();
+    </script>
+  </body>
+</html>
